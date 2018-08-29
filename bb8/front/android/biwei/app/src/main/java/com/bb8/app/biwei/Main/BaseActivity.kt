@@ -2,8 +2,8 @@ package com.bb8.app.biwei.Main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import butterknife.ButterKnife
-import butterknife.Unbinder
+//import butterknife.ButterKnife
+//import butterknife.Unbinder
 import android.support.annotation.NonNull
 import android.view.ViewGroup
 import android.support.design.widget.TabLayout
@@ -24,17 +24,17 @@ import android.os.Build
 open class  BaseActivity : AppCompatActivity() {
 
 
-    var unbinder: Unbinder? = null;
-
-
-    fun ButterKnifeBind() {
-        unbinder = ButterKnife.bind(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unbinder?.unbind()
-    }
+//    var unbinder: Unbinder? = null;
+//
+//
+//    fun ButterKnifeBind() {
+//        unbinder = ButterKnife.bind(this)
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        unbinder?.unbind()
+//    }
 
 //    fun <T> bindUntilEvent(event: ActivityLifeCycleEvent): Observable.Transformer<T, T> {
 //        return object : Observable.Transformer<T, T>() {
