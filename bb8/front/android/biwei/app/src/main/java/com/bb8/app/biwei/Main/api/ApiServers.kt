@@ -16,11 +16,11 @@ interface  ApiServers {
 
 //    @Headers( "Content-Type: application/json" )
     @POST("api/coin/info")
-    fun getBitcoinInfo( @Body params: HashMap<String, String>): Observable<ObjectResponse<Bitcoin>>
+    fun getBitcoinInfo( @Body params: HashMap<String, Any>): Observable<ObjectResponse<Bitcoin>>
 
 
     @POST("api/market/query")
-    fun getGlobalTickets(@Body params: HashMap<String, String>): Observable<ObjectResponse<List<GlobalTicket>>>
+    fun getGlobalTickets(@Body params: HashMap<String, Any>): Observable<ObjectResponse<List<GlobalTicket>>>
 
 
 

@@ -9,6 +9,7 @@ import com.bb8.app.biwei.Main.api.*
 import com.bb8.app.biwei.Main.utils.L
 import com.bb8.app.biwei.Market.model.Bitcoin
 import com.bb8.app.biwei.Market.model.GlobalTicket
+import com.bb8.app.biwei.Market.view.HomeDemoActivity
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
@@ -19,6 +20,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.adapter.rxjava2.Result
 
+import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.singleTop
 
 class MainActivity : BaseActivity() {
 
@@ -29,7 +33,7 @@ class MainActivity : BaseActivity() {
 
         var httpClient = HttpClient.instance
         //
-        var params = HashMap<String,String>()
+        var params = HashMap<String,Any>()
         params.put("name","BTC")
         httpClient.getAPIServers().getBitcoinInfo(params)
                 .compose(NetworkScheduler.compose())
@@ -61,6 +65,14 @@ class MainActivity : BaseActivity() {
                             L.d("222222xxxxxxxxffffff")
                             respond?.list?.get(2)?.cnname?.let { L.d(it) }
                         }))
+
+
+        //
+      button.setOnClickListener { view ->
+
+          startActivity(intentFor<HomeDemoActivity>("name" to "peakfeng", "age" to 13).singleTop())
+
+      }
 
     }
 
