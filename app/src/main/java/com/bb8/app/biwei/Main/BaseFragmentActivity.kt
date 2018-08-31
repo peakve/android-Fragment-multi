@@ -12,12 +12,12 @@ import com.bb8.app.biwei.R
  */
 
 open class BaseFragmentActivity : BaseActivity() {
-    protected var currentFragment: Fragment?= null
+    protected var currentFragment: Fragment? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragment_base)
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_fragment_base)
+//    }
 
     protected fun setDefaultFragment(fragment: Fragment) {
         // 开启Fragment事务

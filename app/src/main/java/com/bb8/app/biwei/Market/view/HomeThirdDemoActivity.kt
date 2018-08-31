@@ -1,16 +1,13 @@
 package com.bb8.app.biwei.Market.view
 
-import android.graphics.Color
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.support.design.widget.TabLayout
-import android.support.design.widget.TabLayout.Tab
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.Menu
@@ -18,9 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.bb8.app.biwei.App
-import com.bb8.app.biwei.Main.BaseFragmentActivity
 import com.bb8.app.biwei.Main.CommonAdapter
-import com.bb8.app.biwei.Main.FragmentSwipeRefresh
 import com.bb8.app.biwei.Main.api.HttpClient
 import com.bb8.app.biwei.Main.api.NetworkScheduler
 import com.bb8.app.biwei.Main.api.ObjectResponse
@@ -30,15 +25,16 @@ import com.bb8.app.biwei.Market.adapter.TicketAdapter
 import com.bb8.app.biwei.Market.model.GlobalTicket
 
 import com.bb8.app.biwei.R
-import kotlinx.android.synthetic.main.activity_home_demo.*
+import com.scwang.smartrefresh.header.MaterialHeader
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter
+import kotlinx.android.synthetic.main.activity_home_third_demo.*
 import kotlinx.android.synthetic.main.fragment_home_demo.*
+import kotlinx.android.synthetic.main.fragment_home_third_demo.*
+import kotlinx.android.synthetic.main.fragment_home_third_demo.view.*
 import org.jetbrains.anko.toast
-import android.support.v7.widget.DividerItemDecoration
 
-
-
-class HomeDemoActivity : BaseFragmentActivity()  {
-
+class HomeThirdDemoActivity : AppCompatActivity() {
 
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
@@ -50,12 +46,12 @@ class HomeDemoActivity : BaseFragmentActivity()  {
      */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
-    private val mTitles: ArrayList<String> = arrayListOf("自选", "全部","BTC","区块链","世界杯","平台币","挖矿","智能合约")
+    private val mTitles = arrayOf("热门", "iOS", "Android", "前端", "后端", "设计", "工具资源")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_demo)
+        setContentView(R.layout.activity_home_third_demo)
 
         setSupportActionBar(toolbar)
         // Create the adapter that will return a fragment for each of the three
@@ -65,34 +61,20 @@ class HomeDemoActivity : BaseFragmentActivity()  {
         // Set up the ViewPager with the sections adapter.
         container.adapter = mSectionsPagerAdapter
 
-
-        container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
-        tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
-
-
-
-        for (tab in mTitles){
-            val t = tabs.newTab().setText(tab)
-
-            tabs.addTab(t)
-        }
-
-//        reduceMarginsInTabs(tabs,60)
-
-//        wrapTabIndicatorToTitle(tabs,0,20)
-
+        tabs.setViewPager(container)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
 
+
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_home_demo, menu)
+        menuInflater.inflate(R.menu.menu_home_third_demo, menu)
         return true
     }
 
@@ -122,65 +104,66 @@ class HomeDemoActivity : BaseFragmentActivity()  {
             return PlaceholderFragment.newInstance(position + 1)
         }
 
+        override fun getPageTitle(position: Int): CharSequence {
+            return mTitles[position]
+        }
+
+
         override fun getCount(): Int {
             // Show 3 total pages.
             return mTitles.size
         }
     }
 
-
     /**
      * A placeholder fragment containing a simple view.
      */
-    class PlaceholderFragment() : FragmentSwipeRefresh<GlobalTicket>() {
+    class PlaceholderFragment : Fragment() {
 
 
-//        var datas:List<GlobalTicket> = ArrayList()
-//        var page:Int=1
-//        var size:Int=20
-//        var rlistAdapter : CommonAdapter<GlobalTicket>? = null
+        var datas:List<GlobalTicket> = ArrayList()
+        var page:Int=1
+        var size:Int=20
+        var rlistAdapter : CommonAdapter<GlobalTicket>? = null
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
-            val rootView = inflater.inflate(R.layout.fragment_home_demo, container, false)
+            val rootView = inflater.inflate(R.layout.fragment_home_third_demo, container, false)
 //            rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
+
             return rootView
         }
 
         override fun onActivityCreated(savedInstanceState: Bundle?) {
             super.onActivityCreated(savedInstanceState)
 
-            listview.layoutManager = LinearLayoutManager(activity)
+            refreshLayout.setOnRefreshListener {
 
+                //
+                loadData()
+                activity.toast("onrefresh")
+                refreshLayout.finishRefresh();
+            }
 
+            refreshLayout.setOnLoadMoreListener {
+                activity.toast("loadMore")
+                loadData()
+                refreshLayout.finishLoadMore()
+            }
 
-            mSwipeRefresh.setColorSchemeColors(Color.rgb(47, 223, 189))
-            mSwipeRefresh.setOnRefreshListener(this)
+            rv.layoutManager = LinearLayoutManager(activity)
 
             rlistAdapter = TicketAdapter(datas){ it: GlobalTicket ->
+
 
                 activity.toast("Hello world!")
 
             }
-            listview.adapter = rlistAdapter
-//            listview.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+            rv.adapter = rlistAdapter
 
-            initReresh(listview)
 
-            mSwipeRefresh.isRefreshing = true
-            loadData()
 
-        }
-        override fun onRefresh() {
-
-            this.page = 1
-            loadData()
-
-        }
-
-        override fun onLoadMore() {
-            L.d("onLoadMore")
-            loadData()
+            refreshLayout.autoRefresh()
         }
 
         fun loadData(){
@@ -197,11 +180,11 @@ class HomeDemoActivity : BaseFragmentActivity()  {
                     .subscribe( object : ObserverResponse<ObjectResponse<List<GlobalTicket>>>(App.application){
 
                         override fun failure(statusCode: Int, message: String) {
-                            mSwipeRefresh?.isRefreshing = false
+
                         }
 
                         override fun success(data: ObjectResponse<List<GlobalTicket>>) {
-                            mSwipeRefresh?.isRefreshing = false
+
                             L.d(data.toString())
                             if (page > 1) {
                                 datas += data.list!!
@@ -211,7 +194,7 @@ class HomeDemoActivity : BaseFragmentActivity()  {
 
                             rlistAdapter?.items = datas
                             rlistAdapter?.notifyDataSetChanged()
-                            mSwipeRefresh?.isRefreshing = false
+
                             page ++
                         }
 
@@ -219,12 +202,6 @@ class HomeDemoActivity : BaseFragmentActivity()  {
 
             //1
         }
-
-
-
-
-
-
 
         companion object {
             /**
@@ -245,7 +222,5 @@ class HomeDemoActivity : BaseFragmentActivity()  {
                 return fragment
             }
         }
-
-
     }
 }

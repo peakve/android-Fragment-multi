@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_tab_1"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/home_tab_1" />
+
+    <item
+        android:id="@+id/home_tab_2"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/home_tab_2" />
+
+    <item
+        android:id="@+id/home_tab_3"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/home_tab_3" />
+
+    <item
+        android:id="@+id/home_tab_4"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/home_tab_4" />
+
+    <item
+        android:id="@+id/home_tab_5"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/home_tab_5" />
+
+</menu>
