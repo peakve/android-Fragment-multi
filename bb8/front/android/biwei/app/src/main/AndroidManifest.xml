@@ -32,6 +32,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:name=".Market.view.DemoActivity"
+            android:label="@string/title_activity_demo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Market.view.WeexDemoActivity"></activity>
+
             android:name=".Market.view.HomeThirdDemoActivity"
             android:label="@string/title_activity_home_third_demo"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -39,6 +44,7 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
