@@ -10,6 +10,7 @@ import com.bb8.app.biwei.Main.utils.L
 import com.bb8.app.biwei.Market.model.Bitcoin
 import com.bb8.app.biwei.Market.model.GlobalTicket
 import com.bb8.app.biwei.Market.view.HomeDemoActivity
+import com.bb8.app.biwei.Market.view.HomeThirdDemoActivity
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
@@ -73,6 +74,18 @@ class MainActivity : BaseActivity() {
           startActivity(intentFor<HomeDemoActivity>("name" to "peakfeng", "age" to 13).singleTop())
 
       }
+
+        imageView2.setOnClickListener { view ->
+
+            startActivity(intentFor<HomeThirdDemoActivity>("name" to "peakfeng", "age" to 13).singleTop())
+
+        }
+
+        button6.setOnClickListener { view ->
+
+            startActivity(intentFor<HomeActivity>("name" to "peakfeng", "age" to 13).singleTop())
+
+        }
 
     }
 

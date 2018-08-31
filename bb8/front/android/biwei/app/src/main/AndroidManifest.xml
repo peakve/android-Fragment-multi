@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <!--MainActivity-->
+        <activity android:name=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +30,15 @@
             android:name=".Market.view.HomeDemoActivity"
             android:label="@string/title_activity_home_demo"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
-            android:name=".Market.view.DemoActivity"
-            android:label="@string/title_activity_demo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".Market.view.HomeThirdDemoActivity"
+            android:label="@string/title_activity_home_third_demo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

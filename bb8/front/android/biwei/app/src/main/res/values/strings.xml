@@ -10,4 +10,16 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
+    <string name="title_activity_home_third_demo">HomeThirdDemoActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="home_tab_1">首页</string>
+    <string name="home_tab_2">行情</string>
+    <string name="home_tab_3">智投</string>
+    <string name="home_tab_4">快讯</string>
+    <string name="home_tab_5">我的</string>
+
+    <string name="menu_home_1">分享</string>
+    <string name="menu_home_2">扫一扫</string>
+    <string name="menu_home_3">设置</string>
+
 </resources>
