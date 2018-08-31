@@ -1,6 +1,10 @@
 package com.bb8.app.biwei
 
 import android.app.Application
+
+import com.bb8.app.biwei.Main.adapter.ImageAdapter
+import com.taobao.weex.InitConfig
+import com.taobao.weex.WXSDKEngine
 import android.content.Context
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
@@ -16,10 +20,10 @@ import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator
 
 
 
+
 /**
  * Created by fengfeng on 2018/8/13.
  */
-
 
 class  App:Application(){
 
@@ -31,9 +35,20 @@ class  App:Application(){
     override fun onCreate() {
         super.onCreate()
         application=this
+        //初始化weex
+        initWeex()
+    }
+
+
+    private fun initWeex() {
+        var builder : InitConfig.Builder = InitConfig.Builder()
+        builder.setImgAdapter(ImageAdapter())
+        var initconfig : InitConfig = builder.build()
+        WXSDKEngine.initialize(this,initconfig)
 
 
         initLayoutConfig()
+
     }
 
     fun initLayoutConfig(){
