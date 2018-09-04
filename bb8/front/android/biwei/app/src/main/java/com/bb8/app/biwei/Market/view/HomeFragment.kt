@@ -61,9 +61,6 @@ class HomeFragment : Fragment() {
 
     }
 
-
-
-
     /**
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.

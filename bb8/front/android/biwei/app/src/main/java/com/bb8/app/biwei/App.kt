@@ -17,10 +17,6 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.scwang.smartrefresh.layout.api.RefreshHeader
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator
 
-
-
-
-
 /**
  * Created by fengfeng on 2018/8/13.
  */
