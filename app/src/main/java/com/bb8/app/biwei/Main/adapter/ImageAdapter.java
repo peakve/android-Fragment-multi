@@ -2,7 +2,10 @@ package com.bb8.app.biwei.Main.adapter;
 
 import android.text.TextUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bb8.app.biwei.App;
+import com.bb8.app.biwei.R;
 import com.bumptech.glide.Glide;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKManager;
@@ -27,16 +30,23 @@ public class ImageAdapter implements IWXImgLoaderAdapter {
                     return;
                 }
                 String temp = url;
+                if (url.startsWith("/assets/")) {
+                    String[] split = url.split("/");
+                    temp = split[3];
+                    Glide.with(WXEnvironment.getApplication())
+                            .load(R.mipmap.share)
+                            .into(view);
+                    Toast.makeText(App.getApplication(),temp,Toast.LENGTH_LONG).show();
+                }
                 if (url.startsWith("//")) {
                     temp = "http:" + url;
+                    Glide.with(WXEnvironment.getApplication())
+                            .load(temp)
+                            .into(view);
                 }
                 if (view.getLayoutParams().width <= 0 || view.getLayoutParams().height <= 0) {
                     return;
                 }
-
-                Glide.with(WXEnvironment.getApplication())
-                        .load(temp)
-                        .into(view);
 
             }
         },0);

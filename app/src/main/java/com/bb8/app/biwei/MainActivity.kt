@@ -74,6 +74,7 @@ class MainActivity : BaseActivity() {
 
         button3.setOnClickListener{
             _ -> startActivity(intentFor<WeexDemoActivity>().singleTop())
+
         }
 
 

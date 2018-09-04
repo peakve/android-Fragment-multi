@@ -20,8 +20,8 @@ class WeexDemoActivity : BaseActivity(),IWXRenderListener{
 
         mWeexInstance = WXSDKInstance(this)
         mWeexInstance.registerRenderListener(this)
-        //mWeexInstance.render("weexDemo", WXFileUtils.loadFileContent("hello.web.js", this),null,null,-1,-1,WXRenderStrategy.APPEND_ASYNC)
-        mWeexInstance.render(WXFileUtils.loadAsset("hello.js",this),null,null)
+        //mWeexInstance.render("weexDemo", WXFileUtils.loadAsset("hello.web.js", this),null,null,-1,-1,WXRenderStrategy.APPEND_ASYNC)
+        mWeexInstance.render(WXFileUtils.loadAsset("dist/page/flashnews/candy.js", this),null,null)
     }
 
     override fun onViewCreated(instance: WXSDKInstance?, view: View?) {
