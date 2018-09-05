@@ -1,6 +1,9 @@
 package com.bb8.app.biwei
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
 import com.bb8.app.biwei.Main.BaseActivity
 import com.bb8.app.biwei.Main.api.*
@@ -28,14 +31,13 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         var httpClient = HttpClient.instance
         //
-        var params = HashMap<String,Any>()
-        params.put("name","BTC")
+        var params = HashMap<String, Any>()
+        params.put("name", "BTC")
         httpClient.getAPIServers().getBitcoinInfo(params)
                 .compose(NetworkScheduler.compose())
-                .subscribe(object : ObserverResponse<ObjectResponse<Bitcoin>>(this){
+                .subscribe(object : ObserverResponse<ObjectResponse<Bitcoin>>(this) {
 
                     override fun failure(statusCode: Int, message: String) {
 
@@ -48,8 +50,6 @@ class MainActivity : BaseActivity() {
                 })
 
         //1
-
-
 
 
         httpClient.request(httpClient.getAPIServers().getGlobalTickets(params),
@@ -65,15 +65,15 @@ class MainActivity : BaseActivity() {
 
 
         //
-      button.setOnClickListener { view ->
+        button.setOnClickListener { view ->
 
-          startActivity(intentFor<HomeDemoActivity>("name" to "peakfeng", "age" to 13).singleTop())
+            startActivity(intentFor<HomeDemoActivity>("name" to "peakfeng", "age" to 13).singleTop())
 
-      }
+        }
 
 
-        button3.setOnClickListener{
-            _ -> startActivity(intentFor<WeexDemoActivity>().singleTop())
+        button3.setOnClickListener { _ ->
+            startActivity(intentFor<WeexDemoActivity>().singleTop())
 
         }
 

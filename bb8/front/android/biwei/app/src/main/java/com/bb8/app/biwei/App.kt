@@ -6,6 +6,8 @@ import com.bb8.app.biwei.Main.adapter.ImageAdapter
 import com.taobao.weex.InitConfig
 import com.taobao.weex.WXSDKEngine
 import android.content.Context
+import com.bb8.app.biwei.Main.wxcomponent.RichText
+import com.bb8.app.biwei.Main.wxmodule.Module
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.api.RefreshLayout
@@ -41,8 +43,8 @@ class  App:Application(){
         builder.setImgAdapter(ImageAdapter())
         var initconfig : InitConfig = builder.build()
         WXSDKEngine.initialize(this,initconfig)
-
-
+        WXSDKEngine.registerComponent("richText",RichText::class.java)
+        WXSDKEngine.registerModule("Module",Module::class.java)
         initLayoutConfig()
 
     }
