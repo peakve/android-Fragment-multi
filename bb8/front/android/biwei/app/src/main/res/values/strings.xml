@@ -20,6 +20,11 @@
 
     <string name="menu_home_1">分享</string>
     <string name="menu_home_2">扫一扫</string>
-    <string name="menu_home_3">设置</string>
+    <string name="menu_home_3">Kline</string>
+    <string name="menu_home_4">LineChart</string>
+    <string name="menu_home_5">PieChart</string>
+    <string name="menu_home_6">HalfPie</string>
+
+
 
 </resources>

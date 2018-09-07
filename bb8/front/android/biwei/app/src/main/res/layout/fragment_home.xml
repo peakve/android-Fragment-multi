@@ -24,6 +24,7 @@
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:visibility="gone"
             app:title=" ">
 
             <android.support.constraint.ConstraintLayout

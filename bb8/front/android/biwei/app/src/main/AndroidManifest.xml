@@ -27,10 +27,6 @@
             android:label="@string/title_activity_home_demo"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".Market.view.DemoActivity"
-            android:label="@string/title_activity_demo"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Market.view.WeexDemoActivity"></activity>
 
             android:name=".Market.view.HomeThirdDemoActivity"
@@ -46,6 +42,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Chart.view.LineChartActivity"  android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Stock.ui.market.activity.StockDetailActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Chart.view.PieChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Chart.view.HalfPieChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Stock.ui.market.activity.StockDetailLandActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 
