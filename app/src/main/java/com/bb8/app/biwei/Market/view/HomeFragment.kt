@@ -1,5 +1,6 @@
 package com.bb8.app.biwei.Market.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -9,6 +10,9 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import com.bb8.app.biwei.App
+import com.bb8.app.biwei.Chart.view.HalfPieChartActivity
+import com.bb8.app.biwei.Chart.view.LineChartActivity
+import com.bb8.app.biwei.Chart.view.PieChartActivity
 import com.bb8.app.biwei.Main.CommonAdapter
 import com.bb8.app.biwei.Main.api.HttpClient
 import com.bb8.app.biwei.Main.api.NetworkScheduler
@@ -18,11 +22,19 @@ import com.bb8.app.biwei.Main.utils.L
 import com.bb8.app.biwei.Market.adapter.TicketAdapter
 import com.bb8.app.biwei.Market.model.GlobalTicket
 import com.bb8.app.biwei.R
+import com.bb8.app.biwei.Stock.ui.market.activity.StockDetailActivity
+import com.bb8.app.biwei.Stock.ui.market.activity.StockDetailLandActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home_third_demo.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.singleTop
 import org.jetbrains.anko.toast
+import android.widget.Toast
+import com.bb8.app.biwei.Main.common.Global
+import com.bb8.app.biwei.MainActivity
+import com.bb8.app.biwei.Main.widget.SegmentControlView
+import com.bb8.app.biwei.Main.widget.SegmentControlView.dp2px
+import org.jetbrains.anko.longToast
 
 
 /**
@@ -57,7 +69,6 @@ class HomeFragment : Fragment() {
 
 //        ( activity as AppCompatActivity).setSupportActionBar(toolbar)
 
-    toolbar.inflateMenu(R.menu.menu_home)
 
     }
 
@@ -205,35 +216,37 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-
-        inflater?.inflate(R.menu.menu_home, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        if (id == R.id.menu_home_1) {
-            activity.toast("menu_home_1")
-            return true
-        }
-
-        else if (id == R.id.menu_home_2) {
-            activity.toast("menu_home_2")
-            return true
-        }
-
-        else if (id == R.id.menu_home_3) {
-            activity.toast("menu_home_3")
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+//
+//        inflater?.inflate(R.menu.menu_home, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        val id = item.itemId
+//
+//        if (id == R.id.menu_home_1) {
+//            activity.toast("menu_home_1")
+//            return true
+//        }
+//
+//        else if (id == R.id.menu_home_2) {
+//            activity.toast("menu_home_2")
+//            return true
+//        }
+//
+//        else if (id == R.id.menu_home_3) {
+//            activity.toast("menu_home_3")
+//            this.startActivity(Intent(activity, StockDetailActivity::class.java))
+//
+//            return true
+//        }
+//
+//        return super.onOptionsItemSelected(item)
+//    }
 
 }

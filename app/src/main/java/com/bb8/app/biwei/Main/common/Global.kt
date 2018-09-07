@@ -1,5 +1,6 @@
 package com.bb8.app.biwei.Main.common
 
+import android.content.Context
 
 
 /**
@@ -16,4 +17,12 @@ class Global private constructor(){
 
     //TODO
     //全局变量
+
+    /**
+     * dp转换成px
+     */
+    fun dp2px(context: Context, dpValue: Float): Int {
+        val scale = context.resources.displayMetrics.density
+        return (dpValue * scale + 0.5f).toInt()
+    }
 }

@@ -10,6 +10,7 @@ import com.bb8.app.biwei.Main.BaseActivity
 import com.bb8.app.biwei.Main.BaseFragmentActivity
 import com.bb8.app.biwei.Main.utils.BottomNavigationViewHelper
 import com.bb8.app.biwei.Market.view.HomeFragment
+import com.bb8.app.biwei.Market.view.HomeMainSegentFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseFragmentActivity() {
@@ -70,22 +71,41 @@ class HomeActivity : BaseFragmentActivity() {
         supportInvalidateOptionsMenu()
 
 
-        val fragment1 = HomeFragment()
+//        val fragment1 = HomeFragment()
+//        fragments.add(fragment1)
+//
+//
+//        val fragment2 = HomeFragment()
+//        fragments.add(fragment2)
+//
+//
+//        val fragment3 = HomeFragment()
+//        fragments.add(fragment3)
+//
+//        val fragment4 = HomeFragment()
+//        fragments.add(fragment4)
+//
+//        val fragment5 = HomeFragment()
+//        fragments.add(fragment5)
+
+
+        val fragment1 = HomeMainSegentFragment()
         fragments.add(fragment1)
 
 
-        val fragment2 = HomeFragment()
+        val fragment2 = HomeMainSegentFragment()
         fragments.add(fragment2)
 
 
-        val fragment3 = HomeFragment()
+        val fragment3 = HomeMainSegentFragment()
         fragments.add(fragment3)
 
-        val fragment4 = HomeFragment()
+        val fragment4 = HomeMainSegentFragment()
         fragments.add(fragment4)
 
-        val fragment5 = HomeFragment()
+        val fragment5 = HomeMainSegentFragment()
         fragments.add(fragment5)
+
 
         setDefaultFragment(fragment3)
 
