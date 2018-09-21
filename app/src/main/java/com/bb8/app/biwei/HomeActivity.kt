@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseFragmentActivity() {
 
-
     private var fragments:ArrayList<Fragment> = arrayListOf()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
