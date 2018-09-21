@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import com.bb8.app.biwei.App
@@ -58,7 +59,6 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         mSectionsPagerAdapter = SectionsPagerAdapter(childFragmentManager)
 
@@ -131,7 +131,7 @@ class HomeFragment : Fragment() {
                 //
                 loadData()
                 activity.toast("onrefresh")
-                refreshLayout.finishRefresh();
+                refreshLayout.finishRefresh()
             }
 
             refreshLayout.setOnLoadMoreListener {
@@ -141,6 +141,7 @@ class HomeFragment : Fragment() {
             }
 
             rv.layoutManager = LinearLayoutManager(activity)
+            rv.itemAnimator = DefaultItemAnimator()
 
             rlistAdapter = TicketAdapter(datas){ it: GlobalTicket ->
 

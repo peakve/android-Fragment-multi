@@ -9,7 +9,6 @@ import com.bb8.app.biwei.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_view_list_layout.view.*
 
-
 /**
  * Created by fengfeng on 2018/8/29.
  */
